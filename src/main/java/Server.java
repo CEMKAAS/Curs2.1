@@ -1,3 +1,4 @@
+
 import com.google.gson.Gson;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
@@ -18,21 +19,21 @@ public class Server {
     public void serverStart() {
 
         try (ServerSocket serverSocket = new ServerSocket(8989);) {
-            while (true) { // в цикле(!) принимаем подключения
+            while (true) { // РІ С†РёРєР»Рµ(!) РїСЂРёРЅРёРјР°РµРј РїРѕРґРєР»СЋС‡РµРЅРёСЏ
                 try (
                         Socket socket = serverSocket.accept();
                         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                 ) {
-                    out.println("Start!" + " Введите покупку и сумму в таком формате " + "пример: булка 03.10.2022 300");
+                    out.println("Start!" + " Р’РІРµРґРёС‚Рµ РїРѕРєСѓРїРєСѓ Рё СЃСѓРјРјСѓ РІ С‚Р°РєРѕРј С„РѕСЂРјР°С‚Рµ " + "РїСЂРёРјРµСЂ: Р±СѓР»РєР° 03.10.2022 300");
                     File binFile = new File("basket.bin");
                     String dataEntry = in.readLine();
                     Gson gson = new Gson();
                     Category category = gson.fromJson(dataEntry, Category.class);
 
-                    System.out.println(category.getTitle());//можно удалить
+                    System.out.println(category.getTitle());//РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ
 
-                    //парсим
+                    //РїР°СЂСЃРёРј
                     CSVParser parser = new CSVParserBuilder()
                             .withSeparator('\t')
                             .build();
@@ -59,7 +60,7 @@ public class Server {
                         );
                     } else {
                         out.println(
-                                output(category, "другое")
+                                output(category, "РґСЂСѓРіРѕРµ")
                         );
                     }
 //                    maxCategory.saveBin(binFile);
@@ -68,7 +69,7 @@ public class Server {
             }
         } catch (
                 IOException e) {
-            System.out.println("Не могу стартовать сервер");
+            System.out.println("РќРµ РјРѕРіСѓ СЃС‚Р°СЂС‚РѕРІР°С‚СЊ СЃРµСЂРІРµСЂ");
             e.printStackTrace();
         }
     }

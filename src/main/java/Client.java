@@ -33,7 +33,7 @@ public class Client {
 
         } catch (
                 IOException e) {
-            System.out.println("Не могу стартовать сервер");
+            System.out.println("РќРµ РјРѕРіСѓ СЃС‚Р°СЂС‚РѕРІР°С‚СЊ СЃРµСЂРІРµСЂ");
             e.printStackTrace();
         }
     }
