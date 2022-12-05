@@ -8,28 +8,28 @@ public class MaxCategoryTest {
 
 
     @BeforeEach
-    @DisplayName("Погнали тестить!")
+    @DisplayName("РџРѕРіРЅР°Р»Рё С‚РµСЃС‚РёС‚СЊ!")
     void setUp() {
         maxCategory = new MaxCategory();
         arraysDays = new ArrayList<>();
-        arraysDays.add(new Category("еда","24.11.2022",300));
-        arraysDays.add(new Category("одежда","24.11.2022",600));
+        arraysDays.add(new Category("РµРґР°","24.11.2022",300));
+        arraysDays.add(new Category("РѕРґРµР¶РґР°","24.11.2022",600));
     }
 
 
     @Test
-    @DisplayName("Тест первый")
+    @DisplayName("РўРµСЃС‚ РїРµСЂРІС‹Р№")
     void testOne() {
-        Assertions.assertEquals("одежда 600", maxCategory.calcMaxCategory("24.11.2022", arraysDays));
+        Assertions.assertEquals("РѕРґРµР¶РґР° 600", maxCategory.calcMaxCategory("24.11.2022", arraysDays));
 
-        System.out.println("Тест номер один выполнен");
+        System.out.println("РўРµСЃС‚ РЅРѕРјРµСЂ РѕРґРёРЅ РІС‹РїРѕР»РЅРµРЅ");
     }
 
 
     @AfterEach
-    @DisplayName("Конец теста")
+    @DisplayName("РљРѕРЅРµС† С‚РµСЃС‚Р°")
     void setDown() {
-        System.out.println("Хватит тестить");
+        System.out.println("РҐРІР°С‚РёС‚ С‚РµСЃС‚РёС‚СЊ");
     }
 
 }
