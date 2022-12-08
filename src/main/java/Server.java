@@ -18,7 +18,7 @@ public class Server {
 
     public void serverStart() {
 
-        try (ServerSocket serverSocket = new ServerSocket(8080)) {
+        try (ServerSocket serverSocket = new ServerSocket(8989)) {
             while (true) { // в цикле(!) принимаем подключения
                 try (
                         Socket socket = serverSocket.accept();
@@ -79,8 +79,8 @@ public class Server {
         String[] date = category.getDate().split("\\.");
         String mount = date[1];
         String year = date[2];
-        String allCategoryMaxJson = gson.toJson(new CategoryMaxJson(maxCategory.maxCategory(titleCategory, category.getSum()),maxCategory.maxDayCategory(titleCategory, category.getDate(), category.getSum()),
-                maxCategory.maxMountCategory(titleCategory, mount + "." + year, category.getSum()),maxCategory.maxYearCategory(titleCategory, year, category.getSum())));
+        String allCategoryMaxJson = gson.toJson(new CategoryMaxJson(maxCategory.maxCategory(titleCategory, category.getSum()), maxCategory.maxDayCategory(titleCategory, category.getDate(), category.getSum()),
+                maxCategory.maxMountCategory(titleCategory, mount + "." + year, category.getSum()), maxCategory.maxYearCategory(titleCategory, year, category.getSum())));
         return allCategoryMaxJson;
     }
 }
