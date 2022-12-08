@@ -15,7 +15,6 @@ import java.util.Map;
 public class Server {
 
     private MaxCategory maxCategory = new MaxCategory();
-    private CategoryMaxJson categoryMaxJson;
 
     public void serverStart() {
 
