@@ -15,10 +15,11 @@ import java.util.Map;
 public class Server {
 
     private MaxCategory maxCategory = new MaxCategory();
+    private CategoryMaxJson categoryMaxJson;
 
     public void serverStart() {
 
-        try (ServerSocket serverSocket = new ServerSocket(8989);) {
+        try (ServerSocket serverSocket = new ServerSocket(8080)) {
             while (true) { // в цикле(!) принимаем подключения
                 try (
                         Socket socket = serverSocket.accept();
@@ -79,10 +80,8 @@ public class Server {
         String[] date = category.getDate().split("\\.");
         String mount = date[1];
         String year = date[2];
-        String maxCategoryJson = gson.toJson(maxCategory.maxCategory(titleCategory, category.getSum()));
-        String maxCategoryDayJson = gson.toJson(maxCategory.maxDayCategory(titleCategory, category.getDate(), category.getSum()));
-        String maxCategoryMountJson = gson.toJson(maxCategory.maxMountCategory(titleCategory, mount + "." + year, category.getSum()));
-        String maxCategoryYearJson = gson.toJson(maxCategory.maxYearCategory(titleCategory, year, category.getSum()));
-        return maxCategoryJson + maxCategoryDayJson + maxCategoryMountJson + maxCategoryYearJson;
+        String allCategoryMaxJson = gson.toJson(new CategoryMaxJson(maxCategory.maxCategory(titleCategory, category.getSum()),maxCategory.maxDayCategory(titleCategory, category.getDate(), category.getSum()),
+                maxCategory.maxMountCategory(titleCategory, mount + "." + year, category.getSum()),maxCategory.maxYearCategory(titleCategory, year, category.getSum())));
+        return allCategoryMaxJson;
     }
 }

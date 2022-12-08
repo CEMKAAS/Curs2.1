@@ -20,7 +20,7 @@ public class MaxCategory {
                 .filter(entry -> Collections.max(maxCategoryAllTime.values()).equals(entry.getValue()))
                 .findFirst().map(Map.Entry::getKey)
                 .orElse(null);
-        return new MaxJson("maxCategory", titleCategoryMax, Collections.max(maxCategoryAllTime.values()));
+        return new MaxJson(titleCategoryMax, Collections.max(maxCategoryAllTime.values()));
     }
 
     public MaxJson maxDayCategory(String titleCategory, String date, Integer price) {
@@ -28,7 +28,7 @@ public class MaxCategory {
         String[] lineMaxDay = calcMaxCategory(date, arraysDays).split(" ");
         String maxDayTitle = lineMaxDay[0];
         Integer maxDayPrice = Integer.valueOf(lineMaxDay[1]);
-        return new MaxJson("maxDayCategory", maxDayTitle, maxDayPrice);
+        return new MaxJson(maxDayTitle, maxDayPrice);
     }
 
     public MaxJson maxMountCategory(String titleCategory, String date, Integer price) {
@@ -36,7 +36,7 @@ public class MaxCategory {
         String[] lineMaxMount = calcMaxCategory(date, arraysMount).split(" ");
         String maxMountTitle = lineMaxMount[0];
         Integer maxMountPrice = Integer.valueOf(lineMaxMount[1]);
-        return new MaxJson("maxMonthCategory", maxMountTitle, maxMountPrice);
+        return new MaxJson(maxMountTitle, maxMountPrice);
     }
 
     public MaxJson maxYearCategory(String titleCategory, String date, Integer price) {
@@ -44,7 +44,7 @@ public class MaxCategory {
         String[] lineMaxYear = calcMaxCategory(date, arraysYear).split(" ");
         String maxYearTitle = lineMaxYear[0];
         Integer maxYearPrice = Integer.valueOf(lineMaxYear[1]);
-        return new MaxJson("maxYearCategory", maxYearTitle, maxYearPrice);
+        return new MaxJson(maxYearTitle, maxYearPrice);
     }
 
     public String calcMaxCategory(String date, ArrayList list) {
